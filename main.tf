@@ -5,7 +5,7 @@ locals{
     availability_zones = ["us-east-2a", "us-east-2b"]
     routetype = ["public", "private"]
     amilinux = "ami-02d1e544b84bf7502"
-    key_name                   = "windows"
+    key_name                   = "SEP_trainning"
     type                       = "t2.micro"
 }
 
