@@ -12,6 +12,18 @@ pipeline {
                 }
             }
         }
-        
+
+        stage('maven') {
+            steps {
+                dir('profilelogin'){
+                    sh 'mvn clean install -DskipTests' 
+                }
+                dir('ravilogin'){
+                    sh 'mvn clean install -DskipTests'   
+                }
+            }
+        }
+
+
     }
 }
