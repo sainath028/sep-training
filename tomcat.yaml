@@ -1,0 +1,43 @@
+---
+- hosts: app
+  become: true
+  tasks:
+      - name: Installing Jdk
+        apt:
+          name: openjdk-8-jdk
+          state: present
+          update_cache: yes
+
+      - name: add tomcatuser
+        user:
+           name: tomcat
+           shell: /sbin/nologin
+
+      - name: Downloading package
+        get_url:
+           url: https://archive.apache.org/dist/tomcat/tomcat-7/v7.0.76/bin/apache-tomcat-7.0.76.tar.gz
+           dest: /tmp/
+
+      #- name: copy
+       # shell: cp -p /tmp/apache-tomcat-7.0.76.tar.gz /usr/local/
+      - name: install
+        unarchive:
+          src: /tmp/apache-tomcat-7.0.76.tar.gz
+          dest: /usr/local
+          remote_src: yes
+
+      - name: make tomcat symbolic
+        file:
+          src: /usr/local/apache-tomcat-7.0.76
+          dest: /usr/local/tomcat7
+          owner: tomcat
+          group: tomcat
+          state: link
+          
+      - name: copying webapp
+        copy:
+          src: /var/lib/jenkins/workspace/sep-ansible/target/raviLogin-1.0.war
+          dest: /usr/local/tomcat7/webapps/
+
+      - name: Starting Tomcat
+        shell: nohup /usr/local/apache-tomcat-7.0.76/bin/startup.sh       #nohup is for running the program in background
