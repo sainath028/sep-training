@@ -23,7 +23,16 @@ pipeline {
                 }
             }
         }
-
+        stage('archive') {
+            steps {
+                dir('profilelogin'){
+                    archiveArtifacts artifacts: 'target/vprofile-v1.war', followSymlinks: false   
+                }
+                dir('ravilogin'){
+                    archiveArtifacts artifacts: 'target/raviLogin-1.0.war', followSymlinks: false       
+                }
+            }
+        }
 
     }
 }
