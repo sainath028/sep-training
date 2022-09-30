@@ -10,6 +10,7 @@ pipeline {
 
         stage('ansible') {
             steps {
+                    sh 'chmod 400 SEP_trainning.pem'
                     sh 'ansible-playbook -i hosts tomcat.yaml' 
             }
         }
