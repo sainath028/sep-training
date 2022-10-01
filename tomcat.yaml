@@ -36,7 +36,7 @@
           
       - name: copying webapp
         copy:
-          src: /var/lib/jenkins/workspace/$job-name/target/raviLogin-1.0.war
+          src: /var/lib/jenkins/workspace/{{job-name}}/target/raviLogin-1.0.war
           dest: /usr/local/tomcat7/webapps/
 
       - name: Starting Tomcat
