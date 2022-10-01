@@ -1,5 +1,5 @@
 ---
-- hosts: app
+- hosts: ser-{{server}}
   become: true
   tasks:
       - name: Installing Jdk
