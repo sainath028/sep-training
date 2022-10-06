@@ -1,0 +1,8 @@
+---
+- hosts: dev
+  become_method: runas
+  tasks:
+    - name: coping file
+      win_copy:
+         src: test.txt
+         dest: c:\temp\
