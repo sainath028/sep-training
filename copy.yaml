@@ -1,0 +1,9 @@
+---
+- hosts: app
+  become: true
+
+  tasks:
+    - name: stoping tomcat
+      service:
+        name: tomcat
+        state: started
