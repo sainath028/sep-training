@@ -35,7 +35,7 @@
     - name: copying webapp
       copy:
         src: target/raviLogin-1.0.war
-        dest: /opt/tomcat/webapps/
+        dest: /usr/local/tomcat7/webapps/
     
     - name: Starting Tomcat
       shell: nohup /usr/local/apache-tomcat-7.0.76/bin/startup.sh   
