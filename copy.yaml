@@ -7,7 +7,18 @@
       service:
         name: tomcat
         state: stopped
+        
+    - name: remove webapps
+      file:
+        path: /opt/tomcat/webapps/*
+        state: absent
+        
     - name: copying webapp
       copy:
-        src: Readme.md
+        src: target/raviLogin-1.0.war
         dest: /opt/tomcat/webapps/
+        
+    - name: started tomcat
+      service:
+        name: tomcat
+        state: started
