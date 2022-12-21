@@ -6,4 +6,8 @@
     - name: stoping tomcat
       service:
         name: tomcat
-        state: started
+        state: stopped
+     - name: copying webapp
+       copy:
+         src: Readme.md
+         dest: /opt/tomcat/webapps/
